@@ -18,7 +18,7 @@ from utils.fetcher import fetch
 # ----------------------------------------------------------------------
 
 st.set_page_config(
-   page_title="Arbitrum Grants Defense Manager", layout="wide", initial_sidebar_state="collapsed",page_icon='https://raw.githubusercontent.com/G-r-ay/Arbitrum-QA-Dashboard/8c4170b70e095caa83fd8c901d171e9df3d8f982/logo.svg'
+   page_title="Arbitrum Grants Defense Manager", layout="wide", initial_sidebar_state="collapsed",page_icon='https://raw.githubusercontent.com/G-r-ay/Arbitrum-QA-Dashboard/a7dc37b11cb900cb2c0ac1b349a516214f37289d/logo.svg'
 )
 
 if "round_id" not in st.session_state:
