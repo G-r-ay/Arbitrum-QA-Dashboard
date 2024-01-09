@@ -225,7 +225,7 @@ with General:
             x, y, r = circle
             ax.add_patch(Circle((x, y), r, alpha=0.9, linewidth=2, color=color))
             count = df[label]
-            plt.annotate(f"{label}: {count}", (x, y), va="center", ha="center")
+            plt.annotate(f"{label}: {count}", (x, y), va="center", ha="center",color = 'white')
         st.pyplot(fig)
 
 # ----------------------------------------------------------------------
