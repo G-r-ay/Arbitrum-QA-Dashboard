@@ -327,7 +327,7 @@ def delete_after_review(round_id,round_status):
             update_response = requests.put(api_url, json=payload, headers=headers)
             if update_response.status_code == 200:
                 print("cosine_clusters.json restarted successfully.")
-               st.success('Database Successfully Updated!', icon="✅")
+                st.success('Database Successfully Updated!', icon="✅")
 def get_round_status():
     today_date = datetime.now().date()
     start_time = datetime.utcfromtimestamp(
