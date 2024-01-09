@@ -254,10 +254,9 @@ def create_temp_directory_for_rounds(round_id,round_status,voting_data,start_tim
 
 def delete_after_review(round_id,round_status):
     if round_status != 'Active':
-         headers = {
-        'Authorization': f'token {access_token}',
-        'Accept': 'application/vnd.github.v3+json'
-        }
+        headers = {
+           'Authorization': f'token {access_token}',
+           'Accept': 'application/vnd.github.v3+json'}
         url = f'https://api.github.com/repos/G-r-ay/Arbitrum-QA-Dashboard/contents/review_db/{round_id}'
         response = requests.get(url, headers=headers)
 
