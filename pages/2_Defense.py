@@ -136,38 +136,38 @@ if not threats_df.empty:
     time_difference =  end_time - current_date
     # Check if two or more days have passed
     if time_difference >= timedelta(days=2):
-    review_complete = st.checkbox('Review Complete')
-    exit_df = threats_df.drop_duplicates(subset='voter')[['voter','Threat Type']].to_csv(index=False)
-    if review_complete:
-        uploaded_file = st.file_uploader("Upload Reviewed File")
-        submit_detected,submit_reviewed  = st.columns(2)
-        if submit_detected.button('Submit All Detected Threats'):
-            manage_df()
-            delete_after_review(st.session_state.round_id, round_status)
-        if uploaded_file is not None:
-            bytes_data = uploaded_file.getvalue()
-            stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-            string_data = stringio.read()
-            dataframe = pd.read_csv(uploaded_file)
-            st.dataframe(dataframe)
-            
-            if submit_reviewed.button('Submit Reviewed File'):
-                manage_df(dataframe, False)
+        review_complete = st.checkbox('Review Complete')
+        exit_df = threats_df.drop_duplicates(subset='voter')[['voter','Threat Type']].to_csv(index=False)
+        if review_complete:
+            uploaded_file = st.file_uploader("Upload Reviewed File")
+            submit_detected,submit_reviewed  = st.columns(2)
+            if submit_detected.button('Submit All Detected Threats'):
+                manage_df()
                 delete_after_review(st.session_state.round_id, round_status)
-    else:
-        if round_status == 'Active':
-            st.download_button(
-                label="Download Threats Active Report",
-                data=exit_df,
-                file_name=f"{st.session_state.round_id}-{datetime.now().date()} threats.csv",
-                key="download_button1"
-            )
+            if uploaded_file is not None:
+                bytes_data = uploaded_file.getvalue()
+                stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+                string_data = stringio.read()
+                dataframe = pd.read_csv(uploaded_file)
+                st.dataframe(dataframe)
+                
+                if submit_reviewed.button('Submit Reviewed File'):
+                    manage_df(dataframe, False)
+                    delete_after_review(st.session_state.round_id, round_status)
         else:
-            st.download_button(
-                label="Download Threats Report",
-                data=exit_df,
-                file_name=f"{st.session_state.round_id} threats.csv",
-                key="download_button1"
-            )
+            if round_status == 'Active':
+                st.download_button(
+                    label="Download Threats Active Report",
+                    data=exit_df,
+                    file_name=f"{st.session_state.round_id}-{datetime.now().date()} threats.csv",
+                    key="download_button1"
+                )
+            else:
+                st.download_button(
+                    label="Download Threats Report",
+                    data=exit_df,
+                    file_name=f"{st.session_state.round_id} threats.csv",
+                    key="download_button1"
+                )
 else:
     st.write("Round is all safe🛡️")
