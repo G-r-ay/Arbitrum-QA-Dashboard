@@ -1,3 +1,7 @@
 circlify
 networkx
-
+plotly
+numpy
+pandas
+requests
+scikit-learn
