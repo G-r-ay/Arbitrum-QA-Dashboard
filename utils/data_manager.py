@@ -254,6 +254,10 @@ def create_temp_directory_for_rounds(round_id,round_status,voting_data,start_tim
 
 def delete_after_review(round_id,round_status):
     if round_status != 'Active':
+         headers = {
+        'Authorization': f'token {access_token}',
+        'Accept': 'application/vnd.github.v3+json'
+        }
         url = f'https://api.github.com/repos/G-r-ay/Arbitrum-QA-Dashboard/contents/review_db/{round_id}'
         response = requests.get(url, headers=headers)
 
@@ -324,7 +328,7 @@ def delete_after_review(round_id,round_status):
             update_response = requests.put(api_url, json=payload, headers=headers)
             if update_response.status_code == 200:
                 print("cosine_clusters.json restarted successfully.")
-
+               st.success('Database Successfully Updated!', icon="✅")
 def get_round_status():
     today_date = datetime.now().date()
     start_time = datetime.utcfromtimestamp(
@@ -415,7 +419,6 @@ def manage_df(dataframe = '', Full=True):
                     
                 else:
                     print("Error updating file:", update_response.text)
-        st.success('Database Successfully Updated!', icon="✅")
     except json.JSONDecodeError as e:
         st.warning(f"No Addresses Under Review Check database for updates", icon="⚠️")
 
