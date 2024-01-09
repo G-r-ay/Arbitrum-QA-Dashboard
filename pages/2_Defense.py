@@ -46,7 +46,7 @@ if not threats_df.empty:
 
     And remember, every update we make to our database is like adding another brick to our digital castle wall. So, let's keep building, one database entry at a time! 🏰
 
-    So, are you ready to join the fight? Let's save our platform, one threat at a time! 💪
+    So, are you ready to join the fight? Let's protect our platform, one threat at a time! 💪
     """)
 
     # --------------------------------------------------------------------
