@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 import itertools
 import pandas as pd
 import requests
-from datetime import datetime
+from datetime import datetime,timedelta
 import plotly.express as px
 from utils.fetcher import fetch
 from utils.data_manager import main_color, delete_after_review, manage_df, check_under_review
@@ -132,8 +132,10 @@ if not threats_df.empty:
     # --------------------------------------------------------------------
     # Download button for Review data
     # --------------------------------------------------------------------
-    
-
+    current_date = datetime.now().date()
+    time_difference =  end_time - current_date
+    # Check if two or more days have passed
+    if time_difference >= timedelta(days=2):
     review_complete = st.checkbox('Review Complete')
     exit_df = threats_df.drop_duplicates(subset='voter')[['voter','Threat Type']].to_csv(index=False)
     if review_complete:
