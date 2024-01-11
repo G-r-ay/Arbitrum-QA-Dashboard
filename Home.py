@@ -30,7 +30,7 @@ else:
 # Load Data
 # ----------------------------------------------------------------------
 
-st.markdown("<h1>Arbitrum QA Dashboard</h1>", unsafe_allow_html=True)
+st.markdown("<h1>Arbitrum Grants Defense Manager</h1>", unsafe_allow_html=True)
 
 # ----------------------------------------------------------------------
 # Cache Functions
